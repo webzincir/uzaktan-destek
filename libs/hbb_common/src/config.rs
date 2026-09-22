@@ -114,7 +114,7 @@ const CHARS: &[char] = &[
     'm', 'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
 ];
 
-pub const RENDEZVOUS_SERVERS: &[&str] = &["uzaktan-destek.webzincir.systems"];
+pub const RENDEZVOUS_SERVERS: &[&str] = &["uzak-baglanti.webzincir.systems"];
 pub const RS_PUB_KEY: &str = "C8qR3zu0wdm1RzJSS5cPb9Qs8b0U0gXM422a96DaBqs=";
 
 pub const RENDEZVOUS_PORT: i32 = 21116;
