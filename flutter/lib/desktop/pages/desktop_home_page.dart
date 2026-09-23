@@ -84,8 +84,10 @@ class _DesktopHomePageState extends State<DesktopHomePage>
       if (!isOutgoingOnly) buildPresetPasswordWarning(),
       Align(
         alignment: Alignment.center,
-        child: loadLogo(),
-      ),
+        child: SizedBox(height: 96, child: loadLogo()),
+      ).marginOnly(bottom: 12),
+      buildTip(context),
+      if (!isOutgoingOnly) buildIDBoard(context),
       ElevatedButton(
         onPressed: () async {
           try {
@@ -105,9 +107,6 @@ class _DesktopHomePageState extends State<DesktopHomePage>
         ),
         child: Text('Destek İste'),
       ).marginSymmetric(horizontal: 14, vertical: 10),
-      buildTip(context),
-      if (!isOutgoingOnly) buildIDBoard(context),
-      if (!isOutgoingOnly) buildPasswordBoard(context),
       FutureBuilder<Widget>(
         future: Future.value(
             Obx(() => buildHelpCards(stateGlobal.updateUrl.value))),
@@ -130,15 +129,31 @@ class _DesktopHomePageState extends State<DesktopHomePage>
     if (isIncomingOnly) {
       children.addAll([
         Divider(),
-        OnlineStatusWidget(
-          onSvcStatusChanged: () {
-            if (isInHomePage()) {
-              Future.delayed(Duration(milliseconds: 300), () {
-                _updateWindowSize();
-              });
-            }
-          },
-        ).marginOnly(bottom: 6, right: 6)
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            OnlineStatusWidget(
+              onSvcStatusChanged: () {
+                if (isInHomePage()) {
+                  Future.delayed(Duration(milliseconds: 300), () {
+                    _updateWindowSize();
+                  });
+                }
+              },
+            ),
+            FutureBuilder<String>(
+              future: bind.mainGetVersion(),
+              builder: (context, snapshot) {
+                if (!snapshot.hasData) return const SizedBox.shrink();
+                return Text(
+                  'v${snapshot.data}',
+                  style: TextStyle(
+                      color: Colors.white.withOpacity(0.3), fontSize: 11),
+                );
+              },
+            ),
+          ],
+        ).marginOnly(bottom: 6, right: 6, left: 6)
       ]);
     }
     final textColor = Theme.of(context).textTheme.titleLarge?.color;
@@ -417,7 +432,7 @@ class _DesktopHomePageState extends State<DesktopHomePage>
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    translate("Your Desktop"),
+                    "Web Zincir Uzaktan Destek",
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                 ),
@@ -428,7 +443,7 @@ class _DesktopHomePageState extends State<DesktopHomePage>
           ),
           if (!isOutgoingOnly)
             Text(
-              translate("desk_tip"),
+              "Destek için her zaman hazırız. Destek iste butonuna basman yeterli. En kısa zamanda bağlantı isteği göndereceğiz ve seni arayacağız.",
               overflow: TextOverflow.clip,
               style: Theme.of(context).textTheme.bodySmall,
             ),
@@ -555,19 +570,7 @@ class _DesktopHomePageState extends State<DesktopHomePage>
       }
     }
     if (bind.isIncomingOnly()) {
-      return Align(
-        alignment: Alignment.centerRight,
-        child: OutlinedButton(
-          onPressed: () {
-            SystemNavigator.pop(); // Close the application
-            // https://github.com/flutter/flutter/issues/66631
-            if (isWindows) {
-              exit(0);
-            }
-          },
-          child: Text(translate('Quit')),
-        ),
-      ).marginAll(14);
+      return const Offstage();
     }
     return Container();
   }
