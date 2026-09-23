@@ -129,6 +129,9 @@ pub(crate) fn is_cjk_lang(lang_or_locale: &str) -> bool {
 fn resolve_lang(saved_lang: &str, locale: &str, cjk_fallback: bool) -> String {
     let locale = locale.to_lowercase();
     let mut lang = saved_lang.to_lowercase();
+    if lang.is_empty() {
+        lang = "tr".to_owned(); // Web Zincir: varsayilan dil her zaman Turkce
+    }
     if cjk_fallback && is_cjk_lang(&lang) {
         return "en".to_owned();
     }
