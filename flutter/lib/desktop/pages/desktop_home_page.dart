@@ -2,6 +2,8 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:convert';
 
+import 'dart:convert';
+import 'package:flutter_hbb/utils/http_service.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -89,6 +91,25 @@ class _DesktopHomePageState extends State<DesktopHomePage>
         alignment: Alignment.center,
         child: loadLogo(),
       ),
+      ElevatedButton(
+        onPressed: () async {
+          try {
+            final myId = await bind.mainGetMyId();
+            await HttpService().sendRequest(
+              Uri.parse('https://webzincir.cloud/YER-TUTUCU/destek-istegi'),
+              HttpMethod.post,
+              body: jsonEncode({'id': myId}),
+            );
+          } catch (e) {
+            // Backend henuz hazir degil, simdilik sessizce gec
+          }
+        },
+        style: ElevatedButton.styleFrom(
+          minimumSize: Size(double.infinity, 56),
+          textStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        ),
+        child: Text('Destek İste'),
+      ).marginSymmetric(horizontal: 14, vertical: 10),
       buildTip(context),
       if (!isOutgoingOnly) buildIDBoard(context),
       if (!isOutgoingOnly) buildPasswordBoard(context),
