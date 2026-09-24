@@ -301,28 +301,29 @@ class _DesktopSettingPageState extends State<DesktopSettingPage>
     );
     return Row(
       children: [
-        if (isWeb)
-          IconButton(
-            onPressed: () {
+        IconButton(
+          onPressed: () {
+            if (isWeb) {
               if (Navigator.canPop(context)) {
                 Navigator.pop(context);
               }
-            },
-            icon: Icon(Icons.arrow_back),
-          ).marginOnly(left: 5),
-        if (isWeb)
-          SizedBox(
-            height: 62,
-            child: Align(
-              alignment: Alignment.center,
-              child: settingsText,
-            ),
-          ).marginOnly(left: 20),
-        if (!isWeb)
-          SizedBox(
-            height: 62,
+            } else {
+              try {
+                Get.find<DesktopTabController>().closeBy(kTabLabelSettingPage);
+              } catch (e) {
+                debugPrintStack(label: '$e');
+              }
+            }
+          },
+          icon: Icon(Icons.arrow_back),
+        ).marginOnly(left: 5),
+        SizedBox(
+          height: 62,
+          child: Align(
+            alignment: Alignment.center,
             child: settingsText,
-          ).marginOnly(left: 20, top: 10),
+          ),
+        ).marginOnly(left: 10),
         const Spacer(),
       ],
     );

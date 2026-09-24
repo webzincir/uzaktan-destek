@@ -140,28 +140,25 @@ class _DesktopHomePageState extends State<DesktopHomePage>
     if (isIncomingOnly) {
       children.addAll([
         Divider(),
-        SizedBox(
-          width: double.infinity,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              OnlineStatusWidget(
-                onSvcStatusChanged: () {
-                  if (isInHomePage()) {
-                    Future.delayed(Duration(milliseconds: 300), () {
-                      _updateWindowSize();
-                    });
-                  }
-                },
-              ),
+        Row(
+          children: [
+            OnlineStatusWidget(
+              onSvcStatusChanged: () {
+                if (isInHomePage()) {
+                  Future.delayed(Duration(milliseconds: 300), () {
+                    _updateWindowSize();
+                  });
+                }
+              },
+            ),
+            const Expanded(child: SizedBox()),
             if (_appVersion.isNotEmpty)
               Text(
                 'v$_appVersion',
                 style: TextStyle(
                     color: Colors.white.withOpacity(0.3), fontSize: 11),
               ),
-            ],
-          ),
+          ],
         ).marginOnly(bottom: 6, right: 6, left: 6)
       ]);
     }

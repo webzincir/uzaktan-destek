@@ -666,18 +666,21 @@ class _DesktopTabState extends State<DesktopTab>
                                 });
                               }
                             },
-                            child: _ListView(
-                              controller: controller,
-                              invisibleTabKeys: invisibleTabKeys,
-                              tabBuilder: tabBuilder,
-                              tabMenuBuilder: tabMenuBuilder,
-                              labelGetter: labelGetter,
-                              maxLabelWidth: maxLabelWidth,
-                              selectedTabBackgroundColor:
-                                  selectedTabBackgroundColor,
-                              unSelectedTabBackgroundColor:
-                                  unSelectedTabBackgroundColor,
-                              selectedBorderColor: selectedBorderColor,
+                            child: Offstage(
+                              offstage: true,
+                              child: _ListView(
+                                controller: controller,
+                                invisibleTabKeys: invisibleTabKeys,
+                                tabBuilder: tabBuilder,
+                                tabMenuBuilder: tabMenuBuilder,
+                                labelGetter: labelGetter,
+                                maxLabelWidth: maxLabelWidth,
+                                selectedTabBackgroundColor:
+                                    selectedTabBackgroundColor,
+                                unSelectedTabBackgroundColor:
+                                    unSelectedTabBackgroundColor,
+                                selectedBorderColor: selectedBorderColor,
+                              ),
                             ))),
                   ],
                 ))),

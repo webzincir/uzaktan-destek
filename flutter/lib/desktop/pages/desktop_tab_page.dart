@@ -59,7 +59,7 @@ class _DesktopTabPageState extends State<DesktopTabPage> {
           setResizable(false);
         } else {
           windowManager.setSize(getIncomingOnlySettingsSize());
-          setResizable(true);
+          setResizable(false);
         }
       };
     }
