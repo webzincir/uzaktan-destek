@@ -88,7 +88,12 @@ class _DesktopHomePageState extends State<DesktopHomePage>
       if (!isOutgoingOnly) buildPresetPasswordWarning(),
       Align(
         alignment: Alignment.center,
-        child: SizedBox(height: 96, child: loadLogo()),
+        child: Image.asset(
+          'assets/logo.png',
+          height: 96,
+          fit: BoxFit.contain,
+          errorBuilder: (ctx, error, stackTrace) => const SizedBox.shrink(),
+        ),
       ).marginOnly(bottom: 12),
       buildTip(context),
       const SizedBox(height: 24),
@@ -112,7 +117,7 @@ class _DesktopHomePageState extends State<DesktopHomePage>
           textStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
         child: Text('Destek İste'),
-      ).marginOnly(left: 20, right: 11, top: 10, bottom: 10),
+      ).marginSymmetric(horizontal: 29, vertical: 10),
       FutureBuilder<Widget>(
         future: Future.value(
             Obx(() => buildHelpCards(stateGlobal.updateUrl.value))),
@@ -149,16 +154,11 @@ class _DesktopHomePageState extends State<DesktopHomePage>
                   }
                 },
               ),
-              FutureBuilder<String>(
-                future: bind.mainGetVersion(),
-                builder: (context, snapshot) {
-                  if (!snapshot.hasData) return const SizedBox.shrink();
-                  return Text(
-                    'v${snapshot.data}',
-                    style: TextStyle(
-                        color: Colors.white.withOpacity(0.3), fontSize: 11),
-                  );
-                },
+            if (_appVersion.isNotEmpty)
+              Text(
+                'v$_appVersion',
+                style: TextStyle(
+                    color: Colors.white.withOpacity(0.3), fontSize: 11),
               ),
             ],
           ),
@@ -467,6 +467,7 @@ class _DesktopHomePageState extends State<DesktopHomePage>
   }
 
   Widget buildHelpCards(String updateUrl) {
+    return Container();
     if (!bind.isCustomClient() &&
         updateUrl.isNotEmpty &&
         !isCardClosed &&
@@ -704,9 +705,15 @@ class _DesktopHomePageState extends State<DesktopHomePage>
     );
   }
 
+  String _appVersion = '';
+
   @override
   void initState() {
     super.initState();
+    _appVersion = '';
+    bind.mainGetVersion().then((v) {
+      if (mounted) setState(() => _appVersion = v);
+    });
     _updateTimer = periodic_immediate(const Duration(seconds: 1), () async {
       await gFFI.serverModel.fetchID();
       final error = await bind.mainGetError();
