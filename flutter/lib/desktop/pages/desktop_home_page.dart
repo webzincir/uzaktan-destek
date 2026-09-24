@@ -81,13 +81,19 @@ class _DesktopHomePageState extends State<DesktopHomePage>
     final isIncomingOnly = bind.isIncomingOnly();
     final isOutgoingOnly = bind.isOutgoingOnly();
     final children = <Widget>[
+      Align(
+        alignment: Alignment.topRight,
+        child: buildPopupMenu(context),
+      ).marginOnly(right: 6, top: 6),
       if (!isOutgoingOnly) buildPresetPasswordWarning(),
       Align(
         alignment: Alignment.center,
         child: SizedBox(height: 96, child: loadLogo()),
       ).marginOnly(bottom: 12),
       buildTip(context),
+      const SizedBox(height: 24),
       if (!isOutgoingOnly) buildIDBoard(context),
+      const SizedBox(height: 20),
       ElevatedButton(
         onPressed: () async {
           try {
@@ -106,7 +112,7 @@ class _DesktopHomePageState extends State<DesktopHomePage>
           textStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
         child: Text('Destek İste'),
-      ).marginSymmetric(horizontal: 14, vertical: 10),
+      ).marginOnly(left: 20, right: 11, top: 10, bottom: 10),
       FutureBuilder<Widget>(
         future: Future.value(
             Obx(() => buildHelpCards(stateGlobal.updateUrl.value))),
@@ -129,30 +135,33 @@ class _DesktopHomePageState extends State<DesktopHomePage>
     if (isIncomingOnly) {
       children.addAll([
         Divider(),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            OnlineStatusWidget(
-              onSvcStatusChanged: () {
-                if (isInHomePage()) {
-                  Future.delayed(Duration(milliseconds: 300), () {
-                    _updateWindowSize();
-                  });
-                }
-              },
-            ),
-            FutureBuilder<String>(
-              future: bind.mainGetVersion(),
-              builder: (context, snapshot) {
-                if (!snapshot.hasData) return const SizedBox.shrink();
-                return Text(
-                  'v${snapshot.data}',
-                  style: TextStyle(
-                      color: Colors.white.withOpacity(0.3), fontSize: 11),
-                );
-              },
-            ),
-          ],
+        SizedBox(
+          width: double.infinity,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              OnlineStatusWidget(
+                onSvcStatusChanged: () {
+                  if (isInHomePage()) {
+                    Future.delayed(Duration(milliseconds: 300), () {
+                      _updateWindowSize();
+                    });
+                  }
+                },
+              ),
+              FutureBuilder<String>(
+                future: bind.mainGetVersion(),
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) return const SizedBox.shrink();
+                  return Text(
+                    'v${snapshot.data}',
+                    style: TextStyle(
+                        color: Colors.white.withOpacity(0.3), fontSize: 11),
+                  );
+                },
+              ),
+            ],
+          ),
         ).marginOnly(bottom: 6, right: 6, left: 6)
       ]);
     }
@@ -242,7 +251,7 @@ class _DesktopHomePageState extends State<DesktopHomePage>
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          translate("ID"),
+                          translate("Bağlantı Kimliği"),
                           style: TextStyle(
                               fontSize: 14,
                               color: Theme.of(context)
@@ -250,8 +259,7 @@ class _DesktopHomePageState extends State<DesktopHomePage>
                                   .titleLarge
                                   ?.color
                                   ?.withOpacity(0.5)),
-                        ).marginOnly(top: 5),
-                        buildPopupMenu(context)
+                        ).marginOnly(top: 5)
                       ],
                     ),
                   ),
@@ -298,7 +306,7 @@ class _DesktopHomePageState extends State<DesktopHomePage>
                 ? Theme.of(context).scaffoldBackgroundColor
                 : Theme.of(context).colorScheme.background,
             child: Icon(
-              Icons.more_vert_outlined,
+              Icons.settings_outlined,
               size: 20,
               color: hover.value ? textColor : textColor?.withOpacity(0.5),
             ),
