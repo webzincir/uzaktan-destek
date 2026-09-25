@@ -81,9 +81,23 @@ class _DesktopHomePageState extends State<DesktopHomePage>
     final isIncomingOnly = bind.isIncomingOnly();
     final isOutgoingOnly = bind.isOutgoingOnly();
     final children = <Widget>[
-      Align(
-        alignment: Alignment.topRight,
-        child: buildPopupMenu(context),
+      Row(
+        children: [
+          if (_appVersion.isNotEmpty)
+            Text(
+              'v$_appVersion',
+              style: TextStyle(
+                color: Theme.of(context)
+                    .textTheme
+                    .titleLarge
+                    ?.color
+                    ?.withOpacity(0.35),
+                fontSize: 11,
+              ),
+            ).marginOnly(left: 14),
+          const Spacer(),
+          buildPopupMenu(context),
+        ],
       ).marginOnly(right: 6, top: 6),
       if (!isOutgoingOnly) buildPresetPasswordWarning(),
       Align(
@@ -140,30 +154,15 @@ class _DesktopHomePageState extends State<DesktopHomePage>
     if (isIncomingOnly) {
       children.addAll([
         Divider(),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            OnlineStatusWidget(
-              onSvcStatusChanged: () {
-                if (isInHomePage()) {
-                  Future.delayed(Duration(milliseconds: 300), () {
-                    _updateWindowSize();
-                  });
-                }
-              },
-            ),
-            if (_appVersion.isNotEmpty)
-              Flexible(
-                child: Text(
-                  'v$_appVersion',
-                  overflow: TextOverflow.clip,
-                  softWrap: false,
-                  style: TextStyle(
-                      color: Colors.white.withOpacity(0.3), fontSize: 11),
-                ),
-              ),
-          ],
-        ).marginOnly(bottom: 6, right: 12, left: 6)
+        OnlineStatusWidget(
+          onSvcStatusChanged: () {
+            if (isInHomePage()) {
+              Future.delayed(Duration(milliseconds: 300), () {
+                _updateWindowSize();
+              });
+            }
+          },
+        ).marginOnly(bottom: 6, right: 6)
       ]);
     }
     final textColor = Theme.of(context).textTheme.titleLarge?.color;
