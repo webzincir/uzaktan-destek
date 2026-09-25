@@ -612,6 +612,7 @@ class _DesktopTabState extends State<DesktopTab>
                       }
                     : (isIncomingHomePage ? () {} : null), // Keep tap recognizer for Windows touch.
                 onPanStart: (_) => startDragging(isMainWindow),
+                behavior: HitTestBehavior.translucent,
                 onPanCancel: () {
                   // We want to disable dragging of the tab area in the tab bar.
                   // Disable dragging is needed because macOS handles dragging by default.

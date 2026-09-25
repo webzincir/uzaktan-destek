@@ -317,6 +317,9 @@ class _DesktopSettingPageState extends State<DesktopSettingPage>
             }
           },
           icon: Icon(Icons.arrow_back),
+          splashRadius: 20,
+          padding: EdgeInsets.zero,
+          constraints: const BoxConstraints(),
         ).marginOnly(left: 5),
         SizedBox(
           height: 62,

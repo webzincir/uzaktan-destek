@@ -141,6 +141,7 @@ class _DesktopHomePageState extends State<DesktopHomePage>
       children.addAll([
         Divider(),
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             OnlineStatusWidget(
               onSvcStatusChanged: () {
@@ -151,15 +152,18 @@ class _DesktopHomePageState extends State<DesktopHomePage>
                 }
               },
             ),
-            const Expanded(child: SizedBox()),
             if (_appVersion.isNotEmpty)
-              Text(
-                'v$_appVersion',
-                style: TextStyle(
-                    color: Colors.white.withOpacity(0.3), fontSize: 11),
+              Flexible(
+                child: Text(
+                  'v$_appVersion',
+                  overflow: TextOverflow.clip,
+                  softWrap: false,
+                  style: TextStyle(
+                      color: Colors.white.withOpacity(0.3), fontSize: 11),
+                ),
               ),
           ],
-        ).marginOnly(bottom: 6, right: 6, left: 6)
+        ).marginOnly(bottom: 6, right: 12, left: 6)
       ]);
     }
     final textColor = Theme.of(context).textTheme.titleLarge?.color;
