@@ -83,6 +83,11 @@ def make_parser():
     parser.add_argument(
         "--app-name", type=str, default="RustDesk", help="The app name."
     )
+    # Web Zincir: --app-name teknik addir (exe, klasor, hizmet, kayit defteri; sadece [a-zA-Z0-9-]).
+    # --display-name kullaniciya gorunen addir (Uygulamalar listesi, Baslat menusu, kurulum sihirbazi).
+    parser.add_argument(
+        "--display-name", type=str, default="", help="The visible app name. Defaults to --app-name."
+    )
     parser.add_argument(
         "-v", "--version", type=str, default="", help="The app version."
     )
@@ -93,7 +98,7 @@ def make_parser():
         "-m",
         "--manufacturer",
         type=str,
-        default="Web Zincir Uzaktan Destek",
+        default="Web Zincir Yazılım Bilgisayar Otomasyon",
         help="The app manufacturer.",
     )
     return parser
@@ -250,7 +255,8 @@ def gen_pre_vars(args, dist_dir):
             f'{indent}<?define Version="{g_version}" ?>\n',
             f'{indent}<?define Manufacturer="{args.manufacturer}" ?>\n',
             f'{indent}<?define Product="{args.app_name}" ?>\n',
-            f'{indent}<?define Description="{args.app_name} Installer" ?>\n',
+            f'{indent}<?define DisplayName="{args.display_name}" ?>\n',
+            f'{indent}<?define Description="{args.display_name} Kurulumu" ?>\n',
             f'{indent}<?define ProductLower="{args.app_name.lower()}" ?>\n',
             f'{indent}<?define RegKeyRoot=".$(var.ProductLower)" ?>\n',
             f'{indent}<?define RegKeyInstall="$(var.RegKeyRoot)\\Install" ?>\n',
@@ -531,6 +537,8 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     app_name = args.app_name
+    if not args.display_name:
+        args.display_name = app_name
     dist_dir = Path(sys.argv[0]).parent.joinpath(args.dist_dir).resolve()
 
     if not prepare_resources():
@@ -539,7 +547,7 @@ if __name__ == "__main__":
     if not init_global_vars(dist_dir, app_name, args):
         sys.exit(-1)
 
-    update_license_file(app_name)
+    update_license_file(args.display_name)
 
     if not gen_pre_vars(args, dist_dir):
         sys.exit(-1)
@@ -568,4 +576,4 @@ if __name__ == "__main__":
     if not gen_custom_dialog_bitmaps():
         sys.exit(-1)
 
-    replace_app_name_in_langs(args.app_name)
+    replace_app_name_in_langs(args.display_name)

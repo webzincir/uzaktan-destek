@@ -69,7 +69,8 @@ lazy_static::lazy_static! {
     static ref ONLINE: Mutex<HashMap<String, i64>> = Default::default();
     pub static ref PROD_RENDEZVOUS_SERVER: RwLock<String> = RwLock::new("".to_owned());
     pub static ref EXE_RENDEZVOUS_SERVER: RwLock<String> = Default::default();
-    pub static ref APP_NAME: RwLock<String> = RwLock::new("Web Zincir Uzaktan Destek".to_owned());
+    // Web Zincir: teknik ad (exe, klasor, hizmet, kayit defteri). Sadece [a-zA-Z0-9-].
+    pub static ref APP_NAME: RwLock<String> = RwLock::new("WebZincir-UzaktanDestek".to_owned());
     static ref KEY_PAIR: Mutex<Option<KeyPair>> = Default::default();
     static ref USER_DEFAULT_CONFIG: RwLock<(UserDefaultConfig, Instant)> = RwLock::new((UserDefaultConfig::load(), Instant::now()));
     pub static ref NEW_STORED_PEER_CONFIG: Mutex<HashSet<String>> = Default::default();
@@ -114,6 +115,8 @@ const CHARS: &[char] = &[
     'm', 'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
 ];
 
+// Web Zincir: kullaniciya gorunen ad (pencere basligi, metinler, tepsi).
+pub const APP_DISPLAY_NAME: &str = "Web Zincir Uzaktan Destek";
 pub const RENDEZVOUS_SERVERS: &[&str] = &["uzaktan-destek.webzincir.systems"];
 pub const RS_PUB_KEY: &str = "C8qR3zu0wdm1RzJSS5cPb9Qs8b0U0gXM422a96DaBqs=";
 

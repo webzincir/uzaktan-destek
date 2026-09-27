@@ -92,9 +92,9 @@ BEGIN
             VALUE "CompanyName", "Web Zincir Yazılım Bilgisayar Otomasyon" "\0"
             VALUE "FileDescription", "Web Zincir Uzaktan Destek" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "web-zincir-uzaktan-destek" "\0"
+            VALUE "InternalName", "WebZincir-UzaktanDestek" "\0"
             VALUE "LegalCopyright", "Copyright © 2026 Web Zincir Uzaktan Destek - All rights reserved." "\0"
-            VALUE "OriginalFilename", "web-zincir-uzaktan-destek.exe" "\0"
+            VALUE "OriginalFilename", "WebZincir-UzaktanDestek.exe" "\0"
             VALUE "ProductName", "Web Zincir Uzaktan Destek" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END

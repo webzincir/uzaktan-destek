@@ -22,6 +22,11 @@
 		<Property Id="ARPURLINFOABOUT" Value="https://github.com/rustdesk/rustdesk" />
 		<Property Id="ARPURLUPDATEINFO" Value="https://github.com/rustdesk/rustdesk" />-->
 
+		<!-- Web Zincir: Uygulamalar listesindeki destek bilgileri -->
+		<Property Id="ARPCONTACT" Value="merhaba@webzincir.com" />
+		<Property Id="ARPHELPTELEPHONE" Value="0534 399 56 95" />
+		<Property Id="ARPHELPLINK" Value="https://webzincir.com" />
+		<Property Id="ARPURLINFOABOUT" Value="https://webzincir.com" />
 		<Property Id="ARPPRODUCTICON" Value="AppIcon" />
 
 		<!--$ArpStart$-->

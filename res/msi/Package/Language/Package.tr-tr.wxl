@@ -1,0 +1,59 @@
+﻿<!--
+Web Zincir Uzaktan Destek - kurulum paketinin Turkce metinleri.
+Standart sihirbaz ekranlarinin (Ileri, Geri, Iptal vb.) Turkcesi WiX'in kendi tr-TR cevirisinden gelir.
+-->
+<WixLocalization Culture="tr-tr" Codepage="1254"
+	xmlns="http://wixtoolset.org/schemas/v4/wxl">
+
+	<String Id="SummaryCodepage" Value="1254" />
+	<String Id="ProductLanguage" Value="1055" />
+
+	<!-- Genel -->
+	<String Id="DowngradeError" Value="[ProductName] uygulamasının daha yeni bir sürümü zaten kurulu." />
+
+	<String Id="AR_Comment" Value="Web Zincir Uzaktan Destek" />
+
+	<String Id="F_App" Value="Web Zincir Uzaktan Destek" />
+	<String Id="F_App_Desc" Value="Web Zincir Uzaktan Destek - Ana program dosyaları." />
+
+	<String Id="SC_Uninstall" Value="Web Zincir Uzaktan Destek'i Kaldır" />
+	<String Id="SC_Uninstall_Desc" Value="Web Zincir Uzaktan Destek'i bilgisayardan kaldırır." />
+
+	<!-- Istemci -->
+	<String Id="F_Client" Value="İstemci" />
+	<String Id="F_Client_Desc" Value="Kullanıcı arayüzü." />
+	<String Id="F_LAVFilters" Value="LAV Filters" />
+	<String Id="F_LAVFilters_Desc" Value="Ses ve görüntü oynatımı için önerilen DirectShow filtreleri." />
+
+	<String Id="SC_Client" Value="Web Zincir Uzaktan Destek" />
+	<String Id="SC_Client_Desc" Value="Web Zincir Uzaktan Destek'i başlatır." />
+
+	<!-- Bu kisayolun adi uygulamanin koduyla eslesmek zorunda ("<teknik ad> Tray"). Degistirmeyin. -->
+	<String Id="SC_Client_Tray" Value="WebZincir-UzaktanDestek Tray" />
+	<String Id="SC_Client_Tray_Desc" Value="Web Zincir Uzaktan Destek tepsi simgesini başlatır." />
+
+	<!-- Hizmet -->
+	<String Id="F_Server" Value="Hizmet" />
+	<String Id="F_Server_Desc" Value="Web Zincir Uzaktan Destek'in arka plan hizmeti." />
+
+	<String Id="Service_DisplayName" Value="Web Zincir Uzaktan Destek Hizmeti" />
+	<String Id="Service_Description" Value="Web Zincir Uzaktan Destek bağlantılarını yönetir." />
+
+	<!-- Kurulum kosullari -->
+	<String Id="LC_OS" Value="[ProductName] en az Windows 7 / Windows Server 2008 R2 gerektirir." />
+	<String Id="LC_ADMIN" Value="[ProductName] kurulumu için yönetici yetkisi gereklidir." />
+
+	<!-- Ozel ekranlar -->
+	<String Id="AnotherAppDialogTitle" Value="Kurulum iptal edildi."/>
+	<String Id="AnotherAppDialogDescription" Value="Uygulama bu bilgisayara başka bir yöntemle kurulmuş. Lütfen önce mevcut kurulumu kaldırın."/>
+
+	<String Id="MyInstallDirDlgDesktopShortcuts" Value="Masaüstü kısayolu oluştur" />
+	<String Id="MyInstallDirDlgStartMenuShortcuts" Value="Başlat menüsü kısayolu oluştur" />
+	<String Id="MyInstallDirDlgPrinter" Value="Web Zincir Uzaktan Destek Yazıcısını kur" />
+
+	<!-- Sozlesme ekrani: WiX'in "Son Kullanici Lisans Sozlesmesi" basliklarini kendi metnimize uyarliyoruz -->
+	<String Id="LicenseAgreementDlgTitle" Value="{\WixUI_Font_Title}Kullanım Koşulları ve Bilgilendirme" />
+	<String Id="LicenseAgreementDlgDescription" Value="Lütfen aşağıdaki metni dikkatle okuyun." />
+	<String Id="LicenseAgreementDlgLicenseAcceptedCheckBox" Value="Kullanım koşullarını okudum ve kabul &amp;ediyorum" />
+
+</WixLocalization>

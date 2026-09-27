@@ -1,0 +1,49 @@
+﻿<!--
+   Copyright (c) Microsoft Corporation.  All rights reserved.
+
+   The use and distribution terms for this software are covered by the
+   Common Public License 1.0 (http://opensource.org/licenses/cpl1.0.php)
+   which can be found in the file CPL.TXT at the root of this distribution.
+   By using this software in any fashion, you are agreeing to be bound by
+   the terms of this license.
+
+   You must not remove this notice, or any other, from this software.
+-->
+<!--
+Firewall ve Util eklentilerinin Turkce metinleri (WiX bu eklentiler icin tr-TR cevirisi sunmuyor).
+-->
+<WixLocalization Culture="tr-tr" Codepage="1254"
+	xmlns="http://wixtoolset.org/schemas/v4/wxl">
+
+	<!-- Firewall -->
+	<String Id="msierrFirewallCannotConnect" Overridable="yes" Value="Windows Güvenlik Duvarı'na bağlanılamadı. ([2]   [3]   [4]   [5])" />
+	<String Id="WixSchedFirewallExceptionsInstall" Overridable="yes" Value="Windows Güvenlik Duvarı yapılandırılıyor" />
+	<String Id="WixSchedFirewallExceptionsUninstall" Overridable="yes" Value="Windows Güvenlik Duvarı yapılandırılıyor" />
+	<String Id="WixRollbackFirewallExceptionsInstall" Overridable="yes" Value="Windows Güvenlik Duvarı yapılandırması geri alınıyor" />
+	<String Id="WixExecFirewallExceptionsInstall" Overridable="yes" Value="Windows Güvenlik Duvarı yapılandırması kuruluyor" />
+	<String Id="WixRollbackFirewallExceptionsUninstall" Overridable="yes" Value="Windows Güvenlik Duvarı yapılandırması geri alınıyor" />
+	<String Id="WixExecFirewallExceptionsUninstall" Overridable="yes" Value="Windows Güvenlik Duvarı yapılandırması kaldırılıyor" />
+
+	<!-- Util -->
+	<String Id="msierrUSRFailedUserCreate" Overridable="yes" Value="Kullanıcı oluşturulamadı. ([2]   [3]   [4]   [5])" />
+	<String Id="msierrUSRFailedUserCreatePswd" Overridable="yes" Value="Geçersiz parola nedeniyle kullanıcı oluşturulamadı. ([2]   [3]   [4]   [5])" />
+	<String Id="msierrUSRFailedUserGroupAdd" Overridable="yes" Value="Kullanıcı gruba eklenemedi. ([2]   [3]   [4]   [5])" />
+	<String Id="msierrUSRFailedUserCreateExists" Overridable="yes" Value="Kullanıcı zaten mevcut olduğu için oluşturulamadı. ([2]   [3]   [4]   [5])" />
+	<String Id="msierrSMBFailedCreate" Overridable="yes" Value="Ağ paylaşımı oluşturulamadı. ([2]   [3]   [4]   [5])" />
+	<String Id="msierrSMBFailedDrop" Overridable="yes" Value="Ağ paylaşımı kaldırılamadı. ([2]   [3]   [4]   [5])" />
+	<String Id="msierrPERFMONFailedRegisterDLL" Overridable="yes" Value="DLL, PerfMon'a kaydedilemedi. ([2]   [3]   [4]   [5])" />
+	<String Id="msierrPERFMONFailedUnregisterDLL" Overridable="yes" Value="DLL'in PerfMon kaydı kaldırılamadı. ([2]   [3]   [4]   [5])" />
+	<String Id="msierrInstallPerfCounterData" Overridable="yes" Value="Performans sayaçları kurulamadı. ([2]   [3]   [4]   [5])" />
+	<String Id="msierrUninstallPerfCounterData" Overridable="yes" Value="Performans sayaçları kaldırılamadı. ([2]   [3]   [4]   [5])" />
+	<String Id="msierrSecureObjectsFailedCreateSD" Overridable="yes" Value="[3]\[4] için güvenlik tanımlayıcısı oluşturulamadı, sistem hatası: [2]" />
+	<String Id="msierrSecureObjectsFailedSet" Overridable="yes" Value="[3] nesnesine güvenlik tanımlayıcısı uygulanamadı, sistem hatası: [2]" />
+	<String Id="msierrSecureObjectsUnknownType" Overridable="yes" Value="Bilinmeyen nesne türü [3], sistem hatası: [2]" />
+	<String Id="msierrXmlFileFailedRead" Overridable="yes" Value="XML dosyaları yapılandırılırken bir hata oluştu." />
+	<String Id="msierrXmlFileFailedOpen" Overridable="yes" Value="XML dosyası açılamadı: [3], sistem hatası: [2]" />
+	<String Id="msierrXmlFileFailedSelect" Overridable="yes" Value="[4] XML dosyasında [3] düğümü bulunamadı, sistem hatası: [2]" />
+	<String Id="msierrXmlFileFailedSave" Overridable="yes" Value="XML dosyasındaki değişiklikler kaydedilemedi: [3], sistem hatası: [2]" />
+	<String Id="msierrXmlConfigFailedRead" Overridable="yes" Value="XML dosyaları yapılandırılırken bir hata oluştu." />
+	<String Id="msierrXmlConfigFailedOpen" Overridable="yes" Value="XML dosyası açılamadı: [3], sistem hatası: [2]" />
+	<String Id="msierrXmlConfigFailedSelect" Overridable="yes" Value="[4] XML dosyasında [3] düğümü bulunamadı, sistem hatası: [2]" />
+	<String Id="msierrXmlConfigFailedSave" Overridable="yes" Value="XML dosyasındaki değişiklikler kaydedilemedi: [3], sistem hatası: [2]" />
+</WixLocalization>
