@@ -289,7 +289,8 @@ class _DesktopSettingPageState extends State<DesktopSettingPage>
                   ),
                   IgnorePointer(
                     child: Text(
-                      'Web Zincir Yazılım Bilgisayar Otomasyon',
+                      'Web Zincir\nYazılım - Bilgisayar - Otomasyon',
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 12,
                         color: Theme.of(context)
@@ -2321,7 +2322,9 @@ class _AboutState extends State<_About> {
       return SingleChildScrollView(
         controller: scrollController,
         child: _Card(title: translate('Web Zincir Uzaktan Destek'), children: [
-          Column(
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(
@@ -2350,7 +2353,7 @@ class _AboutState extends State<_About> {
                     style: linkStyle,
                   ).marginSymmetric(vertical: 4.0)),
             ],
-          ).marginOnly(left: _kContentHMargin)
+          ).marginOnly(left: _kContentHMargin))
         ]),
       );
     });

@@ -108,7 +108,7 @@ class _DesktopHomePageState extends State<DesktopHomePage>
           fit: BoxFit.contain,
           errorBuilder: (ctx, error, stackTrace) => const SizedBox.shrink(),
         ),
-      ).marginOnly(bottom: 12),
+      ).marginOnly(top: 16, bottom: 12),
       buildTip(context),
       const SizedBox(height: 24),
       if (!isOutgoingOnly) buildIDBoard(context),

@@ -626,6 +626,7 @@ class _DesktopTabState extends State<DesktopTab>
                   }
                 },
                 child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Offstage(
                         offstage: !isMacOS,
