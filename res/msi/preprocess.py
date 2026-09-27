@@ -25,17 +25,22 @@ g_arpsystemcomponent = {
         "t": "string",
         "v": "!(loc.AR_Comment)",
     },
+    # Web Zincir: Uygulamalar listesindeki destek bilgileri
     "Contact": {
         "msi": "ARPCONTACT",
-        "v": "https://github.com/rustdesk/rustdesk",
+        "v": "merhaba@webzincir.com",
+    },
+    "HelpTelephone": {
+        "msi": "ARPHELPTELEPHONE",
+        "v": "0534 399 56 95",
     },
     "HelpLink": {
         "msi": "ARPHELPLINK",
-        "v": "https://github.com/rustdesk/rustdesk/issues/",
+        "v": "https://webzincir.com",
     },
-    "ReadMe": {
-        "msi": "ARPREADME",
-        "v": "https://github.com/rustdesk/rustdesk",
+    "URLInfoAbout": {
+        "msi": "ARPURLINFOABOUT",
+        "v": "https://webzincir.com",
     },
 }
 
